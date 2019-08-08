@@ -151,12 +151,16 @@ public class MyWallet {
 						System.out.println("Enter Mobile no. of account where money to transfer");
 						while (true) {
 							mobile = getMobile();
-							acc = service.findAccount(mobile);
-							if (acc != null) {
-								to = acc;
-								break;
-							} else {
-								System.out.println("Account not found\nRe-Enter mobile no.");
+							if(mobile != from.getMobile()) {
+								acc = service.findAccount(mobile);
+								if (acc != null) {
+									to = acc;
+									break;
+								} else {
+									System.out.println("Account not found\nRe-Enter mobile no.");
+								}
+							}else {
+								System.out.println("You can not transfer to same account");
 							}
 						}
 
